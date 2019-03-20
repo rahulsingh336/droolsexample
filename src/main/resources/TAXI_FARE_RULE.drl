@@ -1,0 +1,13 @@
+global com.rs.drools.droolsexample.model.Fare rideFare;
+import com.rs.drools.droolsexample.model.TaxiRide;
+import com.rs.drools.droolsexample.model.Fare;
+
+dialect  "mvel"
+
+rule "Calculate Taxi Fare - Scenario 1"
+    when
+        taxiRideInstance:TaxiRide(nightSurCharge == false && distanceInMile < 10);
+    then
+        rideFare.setNightSurcharge(0);
+        rideFare.setRideFare(700);
+end
